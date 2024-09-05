@@ -54,17 +54,21 @@ body {
 	min-height: 100vh;
 }
 
-section {
-	height: 100vh;
-	display: flex;
-	place-content: center;
-	place-items: center;
-}
-
 #app {
 	max-width: 1280px;
 	margin: 0 auto;
 	text-align: center;
+	padding: 0 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 25vh;
+}
+
+#app > section {
+	height: 100vh;
+	display: flex;
+	place-content: center;
+	place-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -175,7 +179,7 @@ section {
 .about {
 	height: 450px;
 	text-align: left;
-	max-width: 665px;
+	min-width: 665px;
 }
 
 .about h1 {
@@ -197,17 +201,12 @@ section {
 	color: var(--primary);
 }
 
-@media (width < 1165px) {
+@media (width < 1265px) {
 	.Aboutme {
 		flex-direction: column;
 	}
 	.about {
 		text-align: center;
-	}
-}
-
-@media (width <= 403px) {
-	:root {
-		overflow: visible;
+		max-width: 665px;
 	}
 }
