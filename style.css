@@ -36,14 +36,18 @@
 	--accent: #2749f1;
 }
 
+/* * {
+	outline: 0.1px solid var(--accent) !important;
+} */
+
 a {
 	font-weight: 500;
-	color: #020203;
+	color: var(--primary);
 	text-decoration: inherit;
 }
 
 a:hover {
-	color: #535bf2;
+	color: var(--accent);
 }
 
 body {
@@ -55,6 +59,7 @@ body {
 }
 
 #app {
+	position: relative;
 	max-width: 1280px;
 	margin: 0 auto;
 	text-align: center;
@@ -64,7 +69,7 @@ body {
 	gap: 25vh;
 }
 
-#app > section {
+#app section {
 	height: 100vh;
 	display: flex;
 	place-content: center;
@@ -84,6 +89,46 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(129, 129, 129, 0.9);
+}
+
+.primaryheader {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1280px;
+	height: 50px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.primaryheader img {
+	border-radius: 5px;
+	height: 35px;
+	aspect-ratio: 1/1;
+}
+
+.primaryheader div {
+	display: flex;
+	place-items: center;
+	gap: 20px;
+}
+
+.links a {
+	color: var(--text);
+}
+
+#togglebtn {
+	height: 50px;
+	width: 50px;
+	display: flex;
+	place-items: center;
+	padding: 10px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--background);
+	transition: all 1s ease;
 }
 
 .hellocontainer {
@@ -145,35 +190,58 @@ body {
 	font-size: 1.5rem;
 	transform: translate(-50%, 0);
 	margin: 0;
-	animation: appear 1s 5s forwards, scrollbounce 1s 5s infinite;
-}
-
-#togglebtn {
-	height: 50px;
-	width: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: fixed;
-	top: 20px;
-	left: 20px;
-	padding: 10px;
-	outline: none;
-	border: none;
-	border-radius: 5px;
-	background-color: var(--background);
-	transition: all 1s ease;
+	animation: appear 1s 2.5s forwards, scrollbounce 1s 5s infinite;
 }
 
 .Aboutme {
 	gap: 50px;
 }
 
-#image {
+.imgcontainer {
+	position: relative;
+	height: 450px;
+	width: 450px;
+	overflow: hidden;
+	flex: 0 0 auto;
+}
+
+.imgcontainer img {
 	height: 450px;
 	aspect-ratio: 1 / 1;
 	background-color: var(--accent);
 	border-radius: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#img-goggles {
+	animation-duration: 1s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+	animation-name: slideOut;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-450px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideOut {
+	from {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-450px);
+	}
 }
 
 .about {
@@ -199,6 +267,10 @@ body {
 
 .about span {
 	color: var(--primary);
+}
+
+#goggles {
+	cursor: help;
 }
 
 @media (width < 1265px) {
