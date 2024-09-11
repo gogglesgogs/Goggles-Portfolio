@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="https://gogglesinc.github.io/cdn/images/goggles-svg.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Goggles's Portfolio</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+			:root {
+				font-family: 'JetBrains Mono', monospace;
+				line-height: 1.5;
+				font-optical-sizing: auto;
+				font-weight: 400;
+				font-style: normal;
+
+				color-scheme: light dark;
+				color: var(--text);
+				background-color: var(--background);
+
+				font-synthesis: none;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			:root[data-theme='light'] {
+				--text: #000933;
+				--background: #f5f7ff;
+				--primary: #001b94;
+				--secondary: #7387ed;
+				--accent: #0e2fd8;
+			}
+
+			:root[data-theme='dark'] {
+				--text: #ccd5ff;
+				--background: #00020a;
+				--primary: #6b86ff;
+				--secondary: #12268c;
+				--accent: #2749f1;
+			}
+
+			a {
+				font-weight: 500;
+				color: var(--primary);
+				text-decoration: inherit;
+			}
+
+			a:hover {
+				color: var(--accent);
+			}
+
+			body {
+				margin: 0;
+				display: flex;
+				place-items: center;
+				min-width: 320px;
+				min-height: 100vh;
+			}
+
+			#app {
+				max-width: 1280px;
+				margin: 0 auto;
+				display: flex;
+			}
+
+			.container {
+				text-align: center;
+			}
+
+			h1 {
+				font-size: 10rem;
+				margin: 0;
+			}
+
+			p {
+				font-size: 1.5rem;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<h1>404</h1>
+				<p>Oops! Page not found</p>
+				<a href="/">Back to homepage</a>
+			</div>
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', (event) => {
+				const theme = window.matchMedia('(prefers-color-scheme: light)').matches;
+				if (theme) {
+					document.documentElement.setAttribute('data-theme', 'light');
+				} else {
+					document.documentElement.setAttribute('data-theme', 'dark');
+				}
+			});
+		</script>
+	</body>
+</html>

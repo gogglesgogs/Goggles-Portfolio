@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
 const gogglestxt = document.querySelector('#goggles');
 const gogglesimg = document.querySelector('#img-goggles');
 gogglestxt.addEventListener('mouseover', () => {
-	gogglesimg.style.animationName = 'slideIn';
+	gogglesimg.style.transform = 'translateX(0px)';
 });
 gogglestxt.addEventListener('mouseleave', () => {
 	gogglesimg.removeAttribute('style');
@@ -68,4 +68,4 @@ setTimetoElement();
 
 setInterval(() => {
 	setTimetoElement();
-}, 30000);
+}, 10000);
