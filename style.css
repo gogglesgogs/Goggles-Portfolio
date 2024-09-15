@@ -125,6 +125,31 @@ body {
 	color: var(--text);
 }
 
+#warning-sign {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	place-content: center;
+	place-items: center;
+	backdrop-filter: blur(10px);
+}
+
+#warning-sign p {
+	color: #000;
+	background-color: #ffcc00;
+	padding: 10px 20px;
+	text-align: center;
+	font-weight: bold;
+	width: 50%;
+	font-size: 2rem;
+	border-radius: 10px;
+}
+
 .Landing {
 	position: relative;
 }
@@ -239,7 +264,6 @@ body {
 .about {
 	height: fit-content;
 	text-align: left;
-	min-width: 665px;
 }
 
 .about h1 {
@@ -343,6 +367,42 @@ body {
 	grid-area: vite;
 }
 
+.Skills div:nth-child(6)::after {
+	content: 'HTML';
+}
+
+.Skills div:nth-child(7)::after {
+	content: 'CSS';
+}
+
+.Skills div:nth-child(8)::after {
+	content: 'JS';
+}
+
+.Skills div:nth-child(9)::after {
+	content: 'Nodejs';
+}
+
+.Skills div:nth-child(10)::after {
+	content: 'NPM';
+}
+
+.Skills div:nth-child(11)::after {
+	content: 'React';
+}
+
+.Skills div:nth-child(12)::after {
+	content: 'Express';
+}
+
+.Skills div:nth-child(13)::after {
+	content: 'Figma';
+}
+
+.Skills div:nth-child(14)::after {
+	content: 'Vite';
+}
+
 .ionicon path {
 	fill: var(--text);
 }
@@ -356,25 +416,35 @@ body {
 	width: 250px;
 	height: 130px;
 	border-radius: 10px;
-	background-color: var(--background);
 	transition: all 1s ease;
 	filter: grayscale(100%);
 	display: flex;
 	place-items: center;
+	place-content: center;
+	gap: 10px;
+}
+
+.skillschild::after {
+	font-size: 1.5rem;
+	padding: 5px;
+	display: none;
+}
+
+.skillschild:hover::after {
+	display: block;
 }
 
 .skillschild:hover {
-	background-color: var(--accent);
+	background-color: var(--secondary);
 	filter: grayscale(0%);
 }
 
 .skillschild img {
-	height: 90px;
+	height: 80px;
 	aspect-ratio: 1 / 1;
-	margin: auto;
 }
 
-@media (width < 1365px) {
+@media only screen and (width < 1365px) {
 	.About {
 		flex-direction: column;
 	}
@@ -398,14 +468,20 @@ body {
 	.skillschild {
 		width: 100px;
 		height: 100px;
-		padding: 5px;
+		padding: 10px;
+	}
+	.skillschild img {
+		height: 70px;
+	}
+	.skillschild:hover {
+		width: max-content;
 	}
 	#app .Skills {
 		grid-template-areas:
 			'head head head head'
 			'lang lang run run'
 			'html css node npm'
-			'js . . .'
+			'js js . .'
 			'frame frame other other'
 			'react express figma vite';
 	}

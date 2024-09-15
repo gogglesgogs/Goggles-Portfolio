@@ -1,21 +1,25 @@
 import './style.css';
 
+const togglebuttonlight = document.querySelector('#light');
+const togglebuttondark = document.querySelector('#dark');
+const togglebutton = document.querySelector('#togglebtn');
+const gogglestxt = document.querySelector('#goggles');
+const gogglesimg = document.querySelector('#img-goggles');
+const daytimeel = document.querySelector('#daytime');
+
+
 // document.querySelector('#app').innerHTML = `
 
 // `
 
 document.addEventListener("DOMContentLoaded", (event) => {
-	const theme = window.matchMedia('(prefers-color-scheme: light)').matches;
-	if (theme) {
-		document.documentElement.setAttribute('data-theme', 'light');
-	} else {
-		document.documentElement.setAttribute('data-theme', 'dark');
-	}
+	setTheme();
+	checkViewportWidth();
+	setTimetoElement();
+
 });
 
-const togglebuttonlight = document.querySelector('#light');
-const togglebuttondark = document.querySelector('#dark');
-const togglebutton = document.querySelector('#togglebtn');
+window.addEventListener("resize", checkViewportWidth);
 
 togglebutton.addEventListener('click', () => {
 	const currentTheme = document.documentElement.dataset.theme;
@@ -34,14 +38,17 @@ window.addEventListener('scroll', () => {
 	document.querySelector('.scroll').style.display = 'none';
 });
 
-const gogglestxt = document.querySelector('#goggles');
-const gogglesimg = document.querySelector('#img-goggles');
 gogglestxt.addEventListener('mouseover', () => {
 	gogglesimg.style.transform = 'translateX(0px)';
 });
+
 gogglestxt.addEventListener('mouseleave', () => {
 	gogglesimg.removeAttribute('style');
 });
+
+setInterval(() => {
+	setTimetoElement();
+}, 10000);
 
 function getTime() {
 	let now = new Date();
@@ -57,15 +64,25 @@ function getTime() {
 	return [formattedday, formattedTime];
 }
 
-const daytimeel = document.querySelector('#daytime');
-
 function setTimetoElement() {
 	let [day, time] = getTime();
 	daytimeel.innerText = `${day} ${time}`;
 }
 
-setTimetoElement();
+function setTheme() {
+	const theme = window.matchMedia('(prefers-color-scheme: light)').matches;
+	if (theme) {
+		document.documentElement.setAttribute('data-theme', 'light');
+	} else {
+		document.documentElement.setAttribute('data-theme', 'dark');
+	}
+}
 
-setInterval(() => {
-	setTimetoElement();
-}, 10000);
+function checkViewportWidth() {
+	var viewportWidth = window.innerWidth;
+	if (viewportWidth < 1380) {
+		document.getElementById("warning-sign").style.display = "flex";
+	} else {
+		document.getElementById("warning-sign").style.display = "none";
+	}
+}
