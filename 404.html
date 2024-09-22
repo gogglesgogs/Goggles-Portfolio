@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="https://gogglesinc.github.io/cdn/images/goggles-svg.svg" />
@@ -14,41 +14,21 @@
 				font-optical-sizing: auto;
 				font-weight: 400;
 				font-style: normal;
-
-				color-scheme: light dark;
-				color: var(--text);
-				background-color: var(--background);
-
+				color: #ccd5ff;
+				background-color: #00020a;
 				font-synthesis: none;
 				text-rendering: optimizeLegibility;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
 			}
 
-			:root[data-theme='light'] {
-				--text: #000933;
-				--background: #f5f7ff;
-				--primary: #001b94;
-				--secondary: #7387ed;
-				--accent: #0e2fd8;
-			}
-
-			:root[data-theme='dark'] {
-				--text: #ccd5ff;
-				--background: #00020a;
-				--primary: #6b86ff;
-				--secondary: #12268c;
-				--accent: #2749f1;
-			}
-
 			a {
 				font-weight: 500;
-				color: var(--primary);
-				text-decoration: inherit;
+				color: #6b86ff;
 			}
 
 			a:hover {
-				color: var(--accent);
+				color: #2749f1;
 			}
 
 			body {
@@ -66,7 +46,10 @@
 			}
 
 			.container {
-				text-align: center;
+				display: flex;
+				place-content: center;
+				place-items: center;
+				flex-direction: column;
 			}
 
 			h1 {
@@ -78,25 +61,35 @@
 				font-size: 1.5rem;
 				margin: 10px;
 			}
+
+			.container p:nth-child(3) {
+				font-size: 1rem;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="app">
 			<div class="container">
-				<h1>404</h1>
-				<p>Oops! Page not found</p>
+				<h1 id="random"></h1>
+				<p>404 Page not found :&#40;</p>
 				<a href="/">Back to homepage</a>
 			</div>
 		</div>
 		<script>
-			document.addEventListener('DOMContentLoaded', (event) => {
-				const theme = window.matchMedia('(prefers-color-scheme: light)').matches;
-				if (theme) {
-					document.documentElement.setAttribute('data-theme', 'light');
+			const element = document.getElementById('random');
+			let words = ['got lost!', 'what?', 'why?', 'how?', 'uhhh', 'huh?'];
+			let index = 0;
+			function updateWord() {
+				if (index < words.length) {
+					element.innerHTML = words[index];
+					index++;
+					setTimeout(updateWord, 1000);
 				} else {
-					document.documentElement.setAttribute('data-theme', 'dark');
+					index = 0;
+					updateWord();
 				}
-			});
+			}
+			updateWord();
 		</script>
 	</body>
 </html>
